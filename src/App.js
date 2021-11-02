@@ -1,8 +1,8 @@
 import './App.css';
-import Capacity from './components/capacity';
-import Price from './components/price';
-import ServedFood from './components/servedFood';
-import Time from './components/time';
+import Capacity from './components/Capacity/capacity';
+import Price from './components/Price/price';
+import ServedFood from './components/Food/servedFood';
+import Time from './components/Time/time';
 
 function App() {
   return (
