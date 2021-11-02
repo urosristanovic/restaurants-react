@@ -1,38 +1,338 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgb(245, 245, 245);
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  border: none;
   text-align: center;
+  text-transform: uppercase;
+  padding: 5px 25px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 3px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+select {
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 3px;
+}
+p {
+  margin: 0;
+}
+.container {
+  width: 100%;
+  display: flex;
+}
+.filter {
+  min-width: 305px;
+  margin: 30px;
+}
+.restaurants {
+  width: 100%;
+}
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgb(201, 197, 197);
+}
+.filter-item p {
+  padding-bottom: 5px;
+  font-weight: 500;
+}
+.btns {
+  display: flex;
+}
+.btns div {
+  width: 100%;
+}
+.btns button {
+  width: 95%;
+  flex-grow: 1;
+}
+#price-range button {
+  background-color: rgba(95, 255, 95, 0.65);
+}
+#filter-capacity button {
+  background-color: rgba(128, 227, 245, 0.65);
+}
+#working-hours button,
+#working-hours select {
+  background-color: rgba(255, 224, 49, 0.534);
+}
+#select-hours {
+  width: 100%;
+}
+.btn-submit button {
+  margin-top: 10px;
+  background-color: rgba(255, 131, 86, 0.719);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn-advanced button {
+  margin-top: 10px;
+  background-color: rgba(255, 33, 33, 0.644);
+}
+#btns-price .active {
+  background-color: rgb(60, 207, 60);
+}
+#price-range button:hover {
+  background-color: rgb(60, 207, 60);
+  transition: all 0.3s;
+}
+#open-now.active {
+  background-color: rgb(209, 184, 41);
+}
+#btns-capacity .active {
+  background-color: rgb(55, 170, 190);
+}
+#filter-capacity button:hover {
+  background-color: rgb(55, 170, 190);
+  transition: all 0.3s;
+}
+#working-hours button:hover,
+#working-hours select:hover {
+  background-color: rgb(209, 184, 41);
+  transition: all 0.3s;
+}
+.btn-submit button:hover {
+  background-color: rgb(219, 99, 55);
+  transition: all 0.3s;
+}
+.btn-advanced button:hover {
+  background-color: rgb(255, 33, 33);
+
+  transition: all 0.3s;
+}
+.btn-advanced,
+.btn-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+.filter-item label:hover {
+  font-weight: 500;
+}
+input[type='checkbox'] {
+  transform: scale(1.2);
+  margin: 5px 10px;
+  outline: none;
+}
+#form-food {
+  padding-left: 10px;
+}
+#food-card li {
+  display: flex;
+  align-items: center;
+  margin: 5px 5px 5px 0;
+  background-color: rgba(248, 110, 60, 0.5);
+  list-style-type: none;
+  font-size: 10px;
+  font-weight: 600;
+}
+.separate {
+  margin: 20px 0 0 5px;
+  display: flex;
+}
+.separate .any {
+  margin-left: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.restaurants {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px 30px 0;
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+  width: 550px;
+  height: 250px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 7px;
+  margin-top: 20px;
+  padding: 0 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 10px;
+  cursor: pointer;
+}
+.card:hover {
+  transform: scale(1.02);
+  transition: all 0.3s;
+}
+.card a {
+  color: rgb(248, 110, 60);
+  text-decoration: none;
+  padding-bottom: 10px;
+}
+.logo {
+  /* padding: 30px; */
+  align-self: center;
+}
+.logo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.details {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.details h2 {
+  margin: 20px 0;
+}
+.details h5 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-right: 10px;
+}
+.details h6 {
+  display: flex;
+  align-items: center;
+  margin: 5px 5px 5px 0;
+  background-color: rgba(248, 110, 60, 0.5);
+}
+.details div {
+  display: flex;
+}
+.sizes {
+  padding-bottom: 10px;
+}
+.p-range {
+  padding-right: 10px;
+}
+.avg-price,
+.card-capacity {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+.avg-price {
+  color: rgb(27, 214, 27);
+}
+.card-capacity {
+  color: rgb(44, 133, 250);
+}
+.w-hours {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(134, 131, 131);
+  border-radius: 10px;
+  padding: 5px 0;
+}
+.openning,
+.closing {
+  color: rgb(255, 243, 81);
+  font-weight: 500;
+  width: 150px;
+}
+.no-restaurants {
+  display: none;
+  text-align: center;
+  width: 550px;
+  margin-top: 60px;
+  margin-right: 30px;
+  padding: 20px;
+  border-radius: 6px;
+  background-color: rgba(255, 131, 86, 0.719);
 }
 
-.App-link {
-  color: #61dafb;
+button .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 4px 0;
+  margin-top: 23px;
+  font-size: 10px;
+
+  position: absolute;
+  z-index: 1;
+}
+button:hover .tooltiptext {
+  visibility: visible;
+}
+.green {
+  background-color: rgb(60, 207, 60);
+}
+.blue {
+  background-color: rgb(55, 170, 190);
+}
+.number-of-restaurants {
+  width: 70%;
+  margin: 30px auto 0 auto;
+  text-align: center;
+  background-color: rgb(235, 235, 235);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px;
+
+  border-radius: 4px;
+  padding: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Advanced */
+#capacity-form,
+#price-form {
+  display: none;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.min-wrapper,
+.max-wrapper {
+  width: 100%;
+}
+#capacity-form label,
+#price-form label {
+  display: inline-block;
+  width: 120px;
+  padding-bottom: 10px;
+}
+#capacity-form input,
+#price-form input {
+  text-align: center;
+  outline: none;
+  border: none;
+  background-color: rgba(95, 255, 95, 0.65);
+  padding: 5px;
+  border-radius: 3px;
+}
+#capacity-form input {
+  background-color: rgba(128, 227, 245, 0.65);
+}
+#capacity-form input:hover {
+  background-color: rgb(55, 170, 190);
+}
+#price-form input:hover {
+  background-color: rgb(60, 207, 60);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='radio'],
+.separate label {
+  cursor: pointer;
+}
+em {
+  background-color: rgba(128, 128, 128, 0.329);
 }
