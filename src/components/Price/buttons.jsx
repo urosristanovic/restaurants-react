@@ -1,17 +1,21 @@
 import React from 'react';
 import PriceRanges from '../../assets/json/prices.json';
+import RangeButton from '../common/rangeButton';
 
 const Buttons = () => {
   return (
-    <div className='btns' id='btns-price'>
+    <div className='btns'>
       {PriceRanges.map(price => {
         return (
-          <button key={price.id} className={price.label} value={price.label}>
-            <span className='tooltiptext green'>
-              {price.minAvgPricePerMeal}-{price.maxAvgPricePerMeal}
-            </span>
-            {price.note}
-          </button>
+          <RangeButton
+            key={price.id}
+            id={price.id}
+            label={price.label}
+            note={price.note}
+            min={price.minAvgPricePerMeal}
+            max={price.maxAvgPricePerMeal}
+            color='green'
+          />
         );
       })}
     </div>

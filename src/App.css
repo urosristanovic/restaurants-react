@@ -292,7 +292,6 @@ button:hover .tooltiptext {
 /* Advanced */
 #capacity-form,
 #price-form {
-  display: none;
   flex-direction: column;
   margin-top: 20px;
 }
