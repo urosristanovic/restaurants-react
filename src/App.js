@@ -3,6 +3,7 @@ import capacities from './assets/json/capacity.json';
 import foods from './assets/json/food.json';
 import prices from './assets/json/prices.json';
 import ServedFood from './components/FoodFilter/foodFilter';
+import Messages from './components/Messages/messages';
 import RangeFilter from './components/RangeFilter/rangeFilter';
 import Time from './components/Time/time';
 
@@ -15,16 +16,7 @@ function App() {
         <Time />
         <ServedFood foods={foods} />
       </section>
-      <div>
-        <h3 className='number-of-restaurants' id='number-of-restaurants'>
-          Number of restaurants
-        </h3>
-        <h2 className='no-restaurants' id='no-restaurants'>
-          Sorry, there are no restaurants with this filter criteria. Please, try
-          something else.
-        </h2>
-        <div className='restaurants' id='restaurants'></div>
-      </div>
+      <Messages />
     </div>
   );
 }
