@@ -2,9 +2,11 @@ import './App.css';
 import capacities from './assets/json/capacity.json';
 import foods from './assets/json/food.json';
 import prices from './assets/json/prices.json';
+import restaurants from './assets/json/restaurants.json';
 import ServedFood from './components/FoodFilter/foodFilter';
 import Messages from './components/Messages/messages';
 import RangeFilter from './components/RangeFilter/rangeFilter';
+import Restaurants from './components/Restaurants/restaurants';
 import Time from './components/Time/time';
 
 function App() {
@@ -16,7 +18,10 @@ function App() {
         <Time />
         <ServedFood foods={foods} />
       </section>
-      <Messages />
+      <div class='restaurants' id='restaurants'>
+        <Messages />
+        <Restaurants restaurants={restaurants} />
+      </div>
     </div>
   );
 }
