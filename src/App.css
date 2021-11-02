@@ -279,6 +279,12 @@ button:hover .tooltiptext {
 .blue:hover {
   background-color: rgb(55, 170, 190);
 }
+.red {
+  background-color: rgba(255, 120, 86, 0.5);
+}
+.red:hover {
+  background-color: rgba(255, 120, 86, 1);
+}
 .number-of-restaurants {
   width: 70%;
   margin: 30px auto 0 auto;
