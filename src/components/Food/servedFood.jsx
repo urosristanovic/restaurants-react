@@ -6,41 +6,31 @@ const ServedFood = () => {
       <p>Food served:</p>
       <form action='' id='form-food'>
         <div>
-          <input type='checkbox' id='serbian' name='interest' value='serbian' />
+          <input type='checkbox' id='serbian' value='serbian' />
           <label htmlFor='serbian'>Serbian</label>
         </div>
         <div>
-          <input type='checkbox' id='chinese' name='interest' value='chinese' />
+          <input type='checkbox' id='chinese' value='chinese' />
           <label htmlFor='chinese'>Chinese</label>
         </div>
         <div>
-          <input
-            type='checkbox'
-            id='international'
-            name='interest'
-            value='international'
-          />
+          <input type='checkbox' id='international' value='international' />
           <label htmlFor='international'>International</label>
         </div>
         <div>
-          <input type='checkbox' id='italian' name='interest' value='italian' />
+          <input type='checkbox' id='italian' value='italian' />
           <label htmlFor='italian'>Italian</label>
         </div>
         <div>
-          <input type='checkbox' id='mexican' name='interest' value='mexican' />
+          <input type='checkbox' id='mexican' value='mexican' />
           <label htmlFor='mexican'>Mexican</label>
         </div>
         <div>
-          <input type='checkbox' id='burgers' name='interest' value='burgers' />
+          <input type='checkbox' id='burgers' value='burgers' />
           <label htmlFor='burgers'>Burgers</label>
         </div>
         <div>
-          <input
-            type='checkbox'
-            id='taiwanese'
-            name='interest'
-            value='taiwanese'
-          />
+          <input type='checkbox' id='taiwanese' value='taiwanese' />
           <label htmlFor='taiwanese'>Taiwanese</label>
         </div>
         <div className='separate'>
