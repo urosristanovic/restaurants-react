@@ -1,5 +1,7 @@
 import Logo from './logo';
 import List from './list';
+import Sizes from './sizes';
+import WorkingHours from './workingHours';
 
 const Restaurants = ({ restaurants }) => {
   return (
@@ -16,20 +18,8 @@ const Restaurants = ({ restaurants }) => {
               <div className='food-card' id='food-card'>
                 <List categories={res.category} />
               </div>
-              <div className='sizes'>
-                <div className='p-range'>
-                  <h5>Average meal price:</h5>
-                  <p className='avg-price'>{res.avgMealPrice}$</p>
-                </div>
-                <div className='c-range'>
-                  <h5>Capacity:</h5>
-                  <p className='card-capacity'>{res.capacity}</p>
-                </div>
-              </div>
-              <div className='w-hours'>
-                <p className='openning'>opening: {res.opening}h</p>
-                <p className='closing'>closing: {res.closing}h</p>
-              </div>
+              <Sizes res={res} />
+              <WorkingHours res={res} />
             </div>
           </div>
         );
