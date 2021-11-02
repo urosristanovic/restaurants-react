@@ -81,12 +81,10 @@ p {
 }
 .btn-submit button {
   margin-top: 10px;
-  background-color: rgba(255, 131, 86, 0.719);
 }
 
 .btn-advanced button {
   margin-top: 10px;
-  background-color: rgba(255, 33, 33, 0.644);
 }
 #btns-price .active {
   background-color: rgb(60, 207, 60);
@@ -111,12 +109,9 @@ p {
   transition: all 0.3s;
 }
 .btn-submit button:hover {
-  background-color: rgb(219, 99, 55);
   transition: all 0.3s;
 }
 .btn-advanced button:hover {
-  background-color: rgb(255, 33, 33);
-
   transition: all 0.3s;
 }
 .btn-advanced,
@@ -273,16 +268,16 @@ button:hover .tooltiptext {
   visibility: visible;
 }
 .green {
-  background-color: rgb(60, 207, 60);
+  background-color: rgba(95, 255, 95, 0.75);
 }
 .green:hover {
-  background-color: rgba(95, 255, 95, 0.65);
+  background-color: rgb(60, 207, 60);
 }
 .blue {
-  background-color: rgb(55, 170, 190);
+  background-color: rgba(128, 227, 245, 0.75);
 }
 .blue:hover {
-  background-color: rgba(128, 227, 245, 0.65);
+  background-color: rgb(55, 170, 190);
 }
 .number-of-restaurants {
   width: 70%;

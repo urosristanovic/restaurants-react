@@ -1,25 +1,16 @@
 import './App.css';
-import Capacity from './components/Capacity/capacity';
-import Price from './components/Price/price';
-import ServedFood from './components/Food/servedFood';
-import Time from './components/Time/time';
-import RangeFilter from './components/RangeFilter/rangeFilter';
-
-import prices from './assets/json/prices.json';
 import capacities from './assets/json/capacity.json';
+import prices from './assets/json/prices.json';
+import ServedFood from './components/Food/servedFood';
+import RangeFilter from './components/RangeFilter/rangeFilter';
+import Time from './components/Time/time';
 
 function App() {
   return (
     <div className='container'>
       <section className='filter'>
-        <RangeFilter ranges={prices} color='green' heading='Price range' />
-        <RangeFilter
-          ranges={capacities}
-          color='blue'
-          heading='Capacity range'
-        />
-        <Price />
-        <Capacity />
+        <RangeFilter ranges={prices} color='green' title='price' />
+        <RangeFilter ranges={capacities} color='blue' title='capacity' />
         <Time />
         <ServedFood />
       </section>
