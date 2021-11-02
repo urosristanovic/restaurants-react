@@ -3,21 +3,21 @@
     "id": 1,
     "note": "S",
     "label": "small",
-    "minTables": 0,
-    "maxTables": 50
+    "min": 0,
+    "max": 50
   },
   {
     "id": 2,
     "note": "M",
     "label": "medium",
-    "minTables": 51,
-    "maxTables": 150
+    "min": 51,
+    "max": 150
   },
   {
     "id": 3,
     "note": "L",
     "label": "large",
-    "minTables": 151,
-    "maxTables": 1000
+    "min": 151,
+    "max": 1000
   }
 ]

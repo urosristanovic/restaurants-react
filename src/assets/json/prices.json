@@ -3,21 +3,21 @@
     "id": 1,
     "note": "$",
     "label": "inexpensive",
-    "minAvgPricePerMeal": 0,
-    "maxAvgPricePerMeal": 500
+    "min": 0,
+    "max": 500
   },
   {
     "id": 2,
     "note": "$$",
     "label": "moderate",
-    "minAvgPricePerMeal": 501,
-    "maxAvgPricePerMeal": 1000
+    "min": 501,
+    "max": 1000
   },
   {
     "id": 3,
     "note": "$$$",
     "label": "expensive",
-    "minAvgPricePerMeal": 1001,
-    "maxAvgPricePerMeal": 10000
+    "min": 1001,
+    "max": 10000
   }
 ]
