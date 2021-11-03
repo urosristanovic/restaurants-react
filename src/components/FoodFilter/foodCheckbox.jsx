@@ -1,4 +1,4 @@
-const Checkbox = ({ food }) => {
+const FoodCheckbox = ({ food }) => {
   return (
     <div>
       <input type='checkbox' id={food.name} value={food.name} />
@@ -9,4 +9,4 @@ const Checkbox = ({ food }) => {
   );
 };
 
-export default Checkbox;
+export default FoodCheckbox;

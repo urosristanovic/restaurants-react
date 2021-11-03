@@ -1,4 +1,4 @@
-const Input = ({ title, value }) => {
+const RangeInput = ({ title, value }) => {
   const name = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   return (
     <div className={`${value}-wrapper`}>
@@ -16,4 +16,4 @@ const Input = ({ title, value }) => {
   );
 };
 
-export default Input;
+export default RangeInput;

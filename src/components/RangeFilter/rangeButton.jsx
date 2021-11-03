@@ -1,4 +1,4 @@
-const Button = ({ range, color }) => {
+const RangeButton = ({ range, color }) => {
   return (
     <button key={range.id} className={color} value={range.label}>
       <span className={'tooltiptext ' + color}>
@@ -9,4 +9,4 @@ const Button = ({ range, color }) => {
   );
 };
 
-export default Button;
+export default RangeButton;

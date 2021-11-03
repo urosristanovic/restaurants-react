@@ -1,5 +1,5 @@
-import Button from './button';
-import Form from './form';
+import RangeButton from './rangeButton';
+import RangeForm from './rangeForm';
 
 const RangeFilter = ({ ranges, title, color }) => {
   const upperHeading =
@@ -9,11 +9,11 @@ const RangeFilter = ({ ranges, title, color }) => {
       <p>{upperHeading} range:</p>
       <div className='btns'>
         {ranges.map(range => {
-          return <Button key={range.id} range={range} color={color} />;
+          return <RangeButton key={range.id} range={range} color={color} />;
         })}
       </div>
 
-      <Form color={color} title={title} />
+      <RangeForm color={color} title={title} />
 
       <div className={'btn-advanced'}>
         <button className={color}>Advanced filters</button>

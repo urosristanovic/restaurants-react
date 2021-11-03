@@ -1,4 +1,4 @@
-const RadioButton = ({ name, checked }) => {
+const FoodRadioButton = ({ name, checked }) => {
   return (
     <div className={name}>
       <input
@@ -15,4 +15,4 @@ const RadioButton = ({ name, checked }) => {
   );
 };
 
-export default RadioButton;
+export default FoodRadioButton;

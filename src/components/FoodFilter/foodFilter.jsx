@@ -1,11 +1,11 @@
 import React from 'react';
-import Form from './form';
+import FoodForm from './foodForm';
 
 const ServedFood = ({ foods }) => {
   return (
     <div id='food-served' className='filter-item'>
       <p>Food served:</p>
-      <Form foods={foods} />
+      <FoodForm foods={foods} />
     </div>
   );
 };

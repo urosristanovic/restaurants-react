@@ -18,7 +18,7 @@ function App() {
         <Time />
         <ServedFood foods={foods} />
       </section>
-      <div class='restaurants' id='restaurants'>
+      <div className='restaurants' id='restaurants'>
         <Messages />
         <Restaurants restaurants={restaurants} />
       </div>
