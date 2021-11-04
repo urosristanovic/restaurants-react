@@ -66,6 +66,9 @@ p {
   width: 95%;
   flex-grow: 1;
 }
+.btns a {
+  width: 100%;
+}
 #price-range button {
   background-color: rgba(95, 255, 95, 0.65);
 }

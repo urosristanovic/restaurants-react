@@ -1,29 +1,72 @@
 import './App.css';
-import capacities from './assets/json/capacity.json';
-import foods from './assets/json/food.json';
-import prices from './assets/json/prices.json';
-import restaurants from './assets/json/restaurants.json';
-import ServedFood from './components/FoodFilter/foodFilter';
-import Messages from './components/Messages/messages';
-import RangeFilter from './components/RangeFilter/rangeFilter';
-import Restaurants from './components/Restaurants/restaurants';
-import Time from './components/Time/time';
+import MainCompnent from './components/mainComponent';
+import { Component } from 'react';
+import { Route } from 'react-router';
+import { withRouter } from 'react-router';
+import { getRestaurantsByPrice } from './services/price';
+import {
+  getPrices,
+  getRestaurants,
+  getCapacities,
+  getFoods,
+} from './services/data';
+import { getRestaurantsByCapacity } from './services/capacity';
 
-function App() {
-  return (
-    <div className='container'>
-      <section className='filter'>
-        <RangeFilter ranges={prices} color='green' title='price' />
-        <RangeFilter ranges={capacities} color='blue' title='capacity' />
-        <Time />
-        <ServedFood foods={foods} />
-      </section>
-      <div className='restaurants' id='restaurants'>
-        <Messages />
-        <Restaurants restaurants={restaurants} />
-      </div>
-    </div>
-  );
+class App extends Component {
+  state = {
+    restaurants: [],
+    prices: [],
+    capacities: [],
+    foods: [],
+    params: '',
+  };
+
+  componentDidMount() {
+    const restaurants = getRestaurants();
+    const prices = getPrices();
+    const capacities = getCapacities();
+    const foods = getFoods();
+    this.setState({ restaurants, prices, capacities, foods });
+  }
+
+  handleQueries() {
+    const params = new URLSearchParams(this.props.location.search);
+    const priceParams = params.get('price');
+    const capacityParams = params.get('capacity');
+    const restaurants = getRestaurants();
+    let filteredRestaurants = getRestaurants();
+    if (priceParams) {
+      filteredRestaurants = getRestaurantsByPrice(
+        restaurants,
+        this.state.prices,
+        priceParams
+      );
+    } else if (capacityParams) {
+      filteredRestaurants = getRestaurantsByCapacity(
+        restaurants,
+        this.state.capacities,
+        capacityParams
+      );
+    }
+    this.setState({ restaurants: filteredRestaurants });
+  }
+
+  render() {
+    return (
+      <Route
+        path='/restaurants'
+        render={() => (
+          <MainCompnent
+            prices={this.state.prices}
+            capacities={this.state.capacities}
+            foods={this.state.foods}
+            restaurants={this.state.restaurants}
+            onClick={() => this.handleQueries()}
+          />
+        )}
+      />
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);

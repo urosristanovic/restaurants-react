@@ -1,7 +1,7 @@
 import RangeButton from './rangeButton';
 import RangeForm from './rangeForm';
 
-const RangeFilter = ({ ranges, title, color }) => {
+const RangeFilter = ({ ranges, title, color, onClick }) => {
   const upperHeading =
     title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
   return (
@@ -9,7 +9,15 @@ const RangeFilter = ({ ranges, title, color }) => {
       <p>{upperHeading} range:</p>
       <div className='btns'>
         {ranges.map(range => {
-          return <RangeButton key={range.id} range={range} color={color} />;
+          return (
+            <RangeButton
+              key={range.id}
+              onClick={onClick}
+              title={title}
+              range={range}
+              color={color}
+            />
+          );
         })}
       </div>
 
