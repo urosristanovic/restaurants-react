@@ -1,7 +1,7 @@
 import './App.css';
 import MainCompnent from './components/mainComponent';
 import { Component } from 'react';
-import { Redirect, Route } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { withRouter } from 'react-router';
 import {
   displayRestaurantsByAdvancedPrice,
@@ -28,6 +28,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // const restaurants = getRestaurants();
     // const prices = getPrices();
     // const capacities = getCapacities();
     // const foods = getFoods();
@@ -82,19 +83,21 @@ class App extends Component {
   render() {
     return (
       <>
-        <Route
-          path='/restaurants'
-          render={() => (
-            <MainCompnent
-              prices={this.state.prices}
-              capacities={this.state.capacities}
-              foods={this.state.foods}
-              restaurants={this.state.restaurants}
-              onClick={() => this.handleQueries()}
-            />
-          )}
-        />
-        <Redirect from='/' to='/restaurants' />
+        <Switch>
+          <Route
+            path='/restaurants'
+            render={() => (
+              <MainCompnent
+                prices={this.state.prices}
+                capacities={this.state.capacities}
+                foods={this.state.foods}
+                restaurants={this.state.restaurants}
+                onClick={() => this.handleQueries()}
+              />
+            )}
+          />
+          <Redirect from='/' exact to='/restaurants' />
+        </Switch>
       </>
     );
   }
