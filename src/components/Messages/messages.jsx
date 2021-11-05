@@ -1,8 +1,8 @@
-const Messages = () => {
+const Messages = ({ length }) => {
   return (
     <div>
       <h3 className='number-of-restaurants' id='number-of-restaurants'>
-        Number of restaurants
+        Number of restaurants is: <i>{length}</i>.
       </h3>
       <h2 className='no-restaurants' id='no-restaurants'>
         Sorry, there are no restaurants with this filter criteria. Please, try

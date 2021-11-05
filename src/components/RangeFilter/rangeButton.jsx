@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const RangeButton = ({ range, color, title, onClick }) => {
   const handleClick = () => {
+    // const query = new URLSearchParams();
+    // query.set(title, range.label);
+    // window.location = '/restaurants?' + query;
     onClick();
   };
 
@@ -22,4 +25,4 @@ const RangeButton = ({ range, color, title, onClick }) => {
   );
 };
 
-export default RangeButton;
+export default withRouter(RangeButton);

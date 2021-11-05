@@ -27,7 +27,7 @@ class MainCompnent extends Component {
           <ServedFood foods={foods} />
         </section>
         <div className='restaurants' id='restaurants'>
-          <Messages />
+          <Messages length={restaurants.length} />
           <Restaurants restaurants={restaurants} />
         </div>
       </div>

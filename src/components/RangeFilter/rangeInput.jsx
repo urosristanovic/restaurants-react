@@ -7,8 +7,8 @@ const RangeInput = ({ title, value }) => {
       </label>
       <input
         type='number'
-        name={`min-${title}`}
-        id={`min-${title}`}
+        name={`${value}-${title}`}
+        id={`${value}-${title}`}
         placeholder={title}
         required
       />

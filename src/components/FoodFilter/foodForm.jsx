@@ -8,8 +8,8 @@ const FoodForm = ({ foods }) => {
         return <FoodCheckbox key={food.id} food={food} />;
       })}
       <div className='separate'>
-        <FoodRadioButton name='all' checked={true} />
-        <FoodRadioButton name='any' checked={false} />
+        {/* <FoodRadioButton name='all' checked={true} />
+        <FoodRadioButton name='any' checked={false} /> */}
       </div>
       <div className='btn-submit'>
         <button className='red' type='submit' id='submit'>
