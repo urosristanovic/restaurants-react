@@ -29,6 +29,8 @@ const choosePriceRange = (prices, selectedPriceRange) => {
 
 const getRestaurantsByPriceRange = (list, price) => {
   return list.filter(
-    res => res.avgMealPrice >= price.min && res.avgMealPrice < price.max
+    restaurant =>
+      restaurant.avgMealPrice >= price.min &&
+      restaurant.avgMealPrice < price.max
   );
 };

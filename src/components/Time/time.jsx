@@ -1,15 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Time = () => {
+  const handleTime = () => {
+    console.log('1');
+  };
+
   return (
     <div id='working-hours' className='filter-item'>
       <p>Working hours:</p>
       <div className='btns'>
-        <button className='open-now' id='open-now'>
-          open now
-        </button>
+        <Link to='?open-at=now'>
+          <button className='open-now' id='open-now'>
+            open now
+          </button>
+        </Link>
         <div className='select-hours'>
-          <select id='select-hours'>
+          <select onClick={handleTime} id='select-hours'>
             <option value='choose'>choose</option>
             <option value='0'>00:00</option>
             <option value='1'>01:00</option>

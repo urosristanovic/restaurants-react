@@ -17,6 +17,7 @@ import {
   displayRestaurantsByAdvancedCapacity,
   displayRestaurantsByCapacity,
 } from './services/capacity';
+import { displayRestaurantsByTime } from './services/time';
 
 class App extends Component {
   state = {
@@ -27,7 +28,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // const restaurants = getRestaurants();
     // const prices = getPrices();
     // const capacities = getCapacities();
     // const foods = getFoods();
@@ -44,6 +44,7 @@ class App extends Component {
     const maxPrice = params.get('max-price');
     const minCapacity = params.get('min-capacity');
     const maxCapacity = params.get('max-capacity');
+    const timeNow = params.get('open-at');
 
     const restaurants = getRestaurants();
     let filteredRestaurants = [];
@@ -66,15 +67,18 @@ class App extends Component {
         minPrice,
         maxPrice
       );
+      console.log(filteredRestaurants);
     } else if (minCapacity && maxCapacity) {
       filteredRestaurants = displayRestaurantsByAdvancedCapacity(
         restaurants,
         minCapacity,
         maxCapacity
       );
+    } else if (timeNow) {
+      displayRestaurantsByTime(restaurants);
     }
-
-    this.setState({ restaurants: filteredRestaurants });
+    if (filteredRestaurants.length > 0)
+      this.setState({ restaurants: filteredRestaurants });
   }
 
   render() {
