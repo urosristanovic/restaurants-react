@@ -25,6 +25,7 @@ class App extends Component {
     prices: getPrices(),
     capacities: getCapacities(),
     foods: getFoods(),
+    params: {},
   };
 
   componentDidMount() {
@@ -46,38 +47,18 @@ class App extends Component {
     const minCapacity = params.get('min-capacity');
     const maxCapacity = params.get('max-capacity');
     const timeNow = params.get('open-at');
-    const restaurants = getRestaurants();
-    let filteredRestaurants = [];
 
-    if (priceParams) {
-      filteredRestaurants = displayRestaurantsByPrice(
-        restaurants,
-        this.state.prices,
-        priceParams
-      );
-    } else if (capacityParams) {
-      filteredRestaurants = displayRestaurantsByCapacity(
-        restaurants,
-        this.state.capacities,
-        capacityParams
-      );
-    } else if (minPrice && maxPrice) {
-      filteredRestaurants = displayRestaurantsByAdvancedPrice(
-        restaurants,
+    this.setState({
+      params: {
+        priceParams,
+        capacityParams,
         minPrice,
-        maxPrice
-      );
-      console.log(filteredRestaurants);
-    } else if (minCapacity && maxCapacity) {
-      filteredRestaurants = displayRestaurantsByAdvancedCapacity(
-        restaurants,
+        maxPrice,
         minCapacity,
-        maxCapacity
-      );
-    } else if (timeNow) {
-      filteredRestaurants = displayRestaurantsByTime(restaurants, timeNow);
-    }
-    this.setState({ restaurants: filteredRestaurants });
+        maxCapacity,
+        timeNow,
+      },
+    });
   }
 
   render() {
@@ -92,6 +73,7 @@ class App extends Component {
                 capacities={this.state.capacities}
                 foods={this.state.foods}
                 restaurants={this.state.restaurants}
+                params={this.state.params}
                 onClick={() => this.handleQueries()}
               />
             )}
