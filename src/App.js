@@ -1,7 +1,7 @@
 import './App.css';
 import MainCompnent from './components/mainComponent';
 import { Component } from 'react';
-import { Route } from 'react-router';
+import { Redirect, Route } from 'react-router';
 import { withRouter } from 'react-router';
 import {
   displayRestaurantsByAdvancedPrice,
@@ -45,7 +45,6 @@ class App extends Component {
     const minCapacity = params.get('min-capacity');
     const maxCapacity = params.get('max-capacity');
     const timeNow = params.get('open-at');
-
     const restaurants = getRestaurants();
     let filteredRestaurants = [];
 
@@ -75,27 +74,14 @@ class App extends Component {
         maxCapacity
       );
     } else if (timeNow) {
-      displayRestaurantsByTime(restaurants);
+      filteredRestaurants = displayRestaurantsByTime(restaurants, timeNow);
     }
-    if (filteredRestaurants.length > 0)
-      this.setState({ restaurants: filteredRestaurants });
+    this.setState({ restaurants: filteredRestaurants });
   }
 
   render() {
     return (
       <>
-        {/* <Route
-          path='/restaurants?:capacity'
-          render={() => (
-            <MainCompnent
-              prices={this.state.prices}
-              capacities={this.state.capacities}
-              foods={this.state.foods}
-              restaurants={this.state.restaurants}
-              onClick={() => this.handleQueries()}
-            />
-          )}
-        /> */}
         <Route
           path='/restaurants'
           render={() => (
@@ -108,6 +94,7 @@ class App extends Component {
             />
           )}
         />
+        <Redirect from='/' to='/restaurants' />
       </>
     );
   }

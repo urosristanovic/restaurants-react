@@ -1,22 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Time = () => {
-  const handleTime = () => {
-    console.log('1');
+  const handleTime = e => {
+    const params = new URLSearchParams();
+    params.set('open-at', e.target.value);
+    window.location = '/restaurants?' + params;
   };
 
   return (
     <div id='working-hours' className='filter-item'>
       <p>Working hours:</p>
       <div className='btns'>
-        <Link to='?open-at=now'>
-          <button className='open-now' id='open-now'>
-            open now
-          </button>
-        </Link>
+        <button
+          onClick={handleTime}
+          className='open-now'
+          value='now'
+          id='open-now'
+        >
+          open now
+        </button>
         <div className='select-hours'>
-          <select onClick={handleTime} id='select-hours'>
+          <select onChange={handleTime} id='select-hours'>
             <option value='choose'>choose</option>
             <option value='0'>00:00</option>
             <option value='1'>01:00</option>

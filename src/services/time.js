@@ -1,6 +1,5 @@
 const getOpenRestaurantsNow = list => {
   const hours = new Date().getHours();
-  console.log(hours);
   return getOpenRestaurants(list, hours);
 };
 const getOpenRestaurants = (list, hours) => {

@@ -248,7 +248,7 @@ input[type='checkbox'] {
   width: 150px;
 }
 .no-restaurants {
-  display: none;
+  display: flex;
   text-align: center;
   width: 550px;
   margin-top: 60px;
