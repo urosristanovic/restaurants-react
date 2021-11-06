@@ -4,7 +4,12 @@ import ServedFood from './FoodFilter/foodFilter';
 import Messages from './Messages/messages';
 import Restaurants from './Restaurants/restaurants';
 import { Component } from 'react';
-import { getRestaurants } from './../services/data';
+import {
+  getPrices,
+  getRestaurants,
+  getCapacities,
+  getFoods,
+} from './../services/data';
 import {
   displayRestaurantsByPrice,
   displayRestaurantsByAdvancedPrice,
@@ -16,10 +21,17 @@ import {
 import { displayRestaurantsByTime } from './../services/time';
 
 class MainCompnent extends Component {
+  state = {
+    restaurants: getRestaurants(),
+    prices: getPrices(),
+    capacities: getCapacities(),
+    foods: getFoods(),
+  };
+
   filterRestaurants(params) {
     const restaurants = getRestaurants();
     let filteredRestaurants = restaurants;
-
+    console.log(params);
     if (params.priceParams) {
       filteredRestaurants = displayRestaurantsByPrice(
         restaurants,
@@ -53,33 +65,24 @@ class MainCompnent extends Component {
     }
     this.setState({ restaurants: filteredRestaurants });
   }
-
   render() {
-    const { prices, capacities, foods, restaurants, params, onClick } =
-      this.props;
-    console.log(params);
+    const { params } = this.props;
     this.filterRestaurants(params);
     return (
       <div className='container'>
         <section className='filter'>
+          <RangeFilter ranges={this.state.prices} color='green' title='price' />
           <RangeFilter
-            onClick={onClick}
-            ranges={prices}
-            color='green'
-            title='price'
-          />
-          <RangeFilter
-            onClick={onClick}
-            ranges={capacities}
+            ranges={this.state.capacities}
             color='blue'
             title='capacity'
           />
           <Time />
-          <ServedFood foods={foods} />
+          <ServedFood foods={this.state.foods} />
         </section>
         <div className='restaurants' id='restaurants'>
-          <Messages length={restaurants.length} />
-          <Restaurants restaurants={restaurants} />
+          <Messages length={this.state.restaurants.length} />
+          <Restaurants restaurants={this.state.restaurants} />
         </div>
       </div>
     );
