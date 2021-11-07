@@ -1,29 +1,19 @@
 import { Link, withRouter } from 'react-router-dom';
 
-const RangeButton = ({ range, color, title, onClick }) => {
-  const handleClick = () => {
-    // const query = new URLSearchParams();
-    // query.set(title, range.label);
-    // window.location = '/restaurants?' + query;
-    // history push, router
-    // link/button
-    onClick();
-  };
-
+const RangeButton = ({ range, color, title }) => {
   return (
-    <Link to={`?${title}=${range.label}`}>
-      <button
-        key={range.id}
-        onClick={handleClick}
-        className={color}
+    <>
+      <Link
+        to={`?${title}=${range.label}`}
         value={range.label}
+        className={`${color}`}
       >
+        {range.note}
         <span className={'tooltiptext ' + color}>
           {range.min}-{range.max}
         </span>
-        {range.note}
-      </button>
-    </Link>
+      </Link>
+    </>
   );
 };
 

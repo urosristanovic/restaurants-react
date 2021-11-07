@@ -12,7 +12,6 @@ const RangeFilter = ({ ranges, title, color, onClick }) => {
           return (
             <RangeButton
               key={range.id}
-              onClick={onClick}
               title={title}
               range={range}
               color={color}

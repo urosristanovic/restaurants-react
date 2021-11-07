@@ -68,6 +68,14 @@ p {
 }
 .btns a {
   width: 100%;
+  display: flex;
+  text-decoration: none;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 7px 10px;
+  margin: 0 2px;
+  border-radius: 5px;
+  color: black;
 }
 #price-range button {
   background-color: rgba(95, 255, 95, 0.65);
@@ -75,12 +83,17 @@ p {
 #filter-capacity button {
   background-color: rgba(128, 227, 245, 0.65);
 }
-#working-hours button,
+#working-hours a:hover {
+  background-color: rgb(209, 184, 41);
+  transition: all 0.3s;
+}
+#working-hours a,
 #working-hours select {
   background-color: rgba(255, 224, 49, 0.534);
 }
 #select-hours {
   width: 100%;
+  height: 100%;
 }
 .btn-submit button {
   margin-top: 10px;
@@ -258,20 +271,20 @@ input[type='checkbox'] {
   background-color: rgba(255, 131, 86, 0.719);
 }
 
-button .tooltiptext {
+a .tooltiptext {
   visibility: hidden;
   width: 80px;
   color: #fff;
   text-align: center;
   border-radius: 3px;
   padding: 4px 0;
-  margin-top: 23px;
+  margin-top: 30px;
   font-size: 10px;
 
   position: absolute;
   z-index: 1;
 }
-button:hover .tooltiptext {
+a:hover .tooltiptext {
   visibility: visible;
 }
 .green {
@@ -279,12 +292,14 @@ button:hover .tooltiptext {
 }
 .green:hover {
   background-color: rgb(60, 207, 60);
+  transition: all 0.3s;
 }
 .blue {
   background-color: rgba(128, 227, 245, 0.75);
 }
 .blue:hover {
   background-color: rgb(55, 170, 190);
+  transition: all 0.3s;
 }
 .red {
   background-color: rgba(255, 120, 86, 0.5);

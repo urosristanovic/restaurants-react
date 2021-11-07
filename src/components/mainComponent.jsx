@@ -31,7 +31,6 @@ class MainCompnent extends Component {
   filterRestaurants(params) {
     const restaurants = getRestaurants();
     let filteredRestaurants = restaurants;
-    console.log(params);
     if (params.priceParams) {
       filteredRestaurants = displayRestaurantsByPrice(
         restaurants,
@@ -67,7 +66,7 @@ class MainCompnent extends Component {
   }
   render() {
     const { params } = this.props;
-    this.filterRestaurants(params);
+    // this.filterRestaurants(params);
     return (
       <div className='container'>
         <section className='filter'>

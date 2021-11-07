@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Time = () => {
   const handleTime = e => {
@@ -11,14 +12,9 @@ const Time = () => {
     <div id='working-hours' className='filter-item'>
       <p>Working hours:</p>
       <div className='btns'>
-        <button
-          onClick={handleTime}
-          className='open-now'
-          value='now'
-          id='open-now'
-        >
+        <Link className='open-now' to='?open-at=now'>
           open now
-        </button>
+        </Link>
         <div className='select-hours'>
           <select onChange={handleTime} id='select-hours'>
             <option value='choose'>choose</option>
