@@ -1,7 +1,7 @@
 import RangeButton from './rangeButton';
 import RangeForm from './rangeForm';
 
-const RangeFilter = ({ ranges, title, color, onClick }) => {
+const RangeFilter = ({ ranges, title, color }) => {
   const upperHeading =
     title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
   return (

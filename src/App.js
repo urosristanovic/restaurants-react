@@ -2,11 +2,15 @@ import { Component } from 'react';
 import { Redirect, Route, Switch, withRouter } from 'react-router';
 import './App.css';
 import MainCompnent from './components/mainComponent';
+import queryString from 'query-string';
 
 class App extends Component {
   state = {
     params: {},
   };
+  componentDidMount() {
+    this.handleQueries();
+  }
 
   handleQueries() {
     const params = new URLSearchParams(this.props.location.search);
@@ -36,7 +40,9 @@ class App extends Component {
       <Switch>
         <Route
           path='/restaurants'
-          render={() => <MainCompnent params={this.state.params} />}
+          render={() => (
+            <MainCompnent params={this.state.params} {...this.props} />
+          )}
         />
         <Redirect from='/' exact to='/restaurants' />
       </Switch>
