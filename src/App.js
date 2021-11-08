@@ -2,16 +2,8 @@ import { Component } from 'react';
 import { Redirect, Route, Switch, withRouter } from 'react-router';
 import './App.css';
 import MainCompnent from './components/mainComponent';
-import queryString from 'query-string';
 
 class App extends Component {
-  state = {
-    params: {},
-  };
-  componentDidMount() {
-    this.handleQueries();
-  }
-
   handleQueries() {
     const params = new URLSearchParams(this.props.location.search);
     const priceParams = params.get('price');
@@ -22,27 +14,24 @@ class App extends Component {
     const maxCapacity = params.get('max-capacity');
     const timeNow = params.get('open-at');
 
-    this.setState({
-      params: {
-        priceParams,
-        capacityParams,
-        minPrice,
-        maxPrice,
-        minCapacity,
-        maxCapacity,
-        timeNow,
-      },
-    });
+    return {
+      priceParams,
+      capacityParams,
+      minPrice,
+      maxPrice,
+      minCapacity,
+      maxCapacity,
+      timeNow,
+    };
   }
 
   render() {
+    const params = this.handleQueries();
     return (
       <Switch>
         <Route
           path='/restaurants'
-          render={() => (
-            <MainCompnent params={this.state.params} {...this.props} />
-          )}
+          render={() => <MainCompnent params={params} {...this.props} />}
         />
         <Redirect from='/' exact to='/restaurants' />
       </Switch>

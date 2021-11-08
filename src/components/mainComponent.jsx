@@ -19,7 +19,6 @@ import {
   displayRestaurantsByAdvancedCapacity,
 } from './../services/capacity';
 import { displayRestaurantsByTime } from './../services/time';
-import queryString from 'query-string';
 
 class MainCompnent extends Component {
   state = {
@@ -27,7 +26,6 @@ class MainCompnent extends Component {
     prices: [],
     capacities: [],
     foods: [],
-    params: {},
   };
 
   componentDidMount() {
@@ -36,8 +34,13 @@ class MainCompnent extends Component {
       prices: getPrices(),
       capacities: getCapacities(),
       foods: getFoods(),
-      params: this.handleSearchParams(),
     });
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.params !== this.props.params) {
+      this.filterRestaurants(this.props.params);
+    }
   }
 
   filterRestaurants(params) {
@@ -77,18 +80,7 @@ class MainCompnent extends Component {
     this.setState({ restaurants: filteredRestaurants });
   }
 
-  handleSearchParams() {
-    const result = queryString.parse(this.props.location.search);
-    console.log(result);
-    return result;
-  }
-
   render() {
-    const { params } = this.props;
-    // this.filterRestaurants(params);
-    // console.log(params);
-    // this.handleSearchParams();
-
     return (
       <div className='container'>
         <section className='filter'>
