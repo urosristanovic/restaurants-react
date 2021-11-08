@@ -28,13 +28,24 @@ class MainCompnent extends Component {
     foods: [],
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({
       restaurants: getRestaurants(),
       prices: getPrices(),
       capacities: getCapacities(),
       foods: getFoods(),
     });
+    // const restaurants = await this.filterRestaurants(this.props.params);
+    // const prices = await getPrices();
+    // const capacities = await getCapacities();
+    // const foods = await getFoods();
+
+    // this.setState({
+    //   restaurants,
+    //   prices,
+    //   capacities,
+    //   foods,
+    // });
   }
 
   componentDidUpdate(prevState) {
@@ -84,11 +95,17 @@ class MainCompnent extends Component {
     return (
       <div className='container'>
         <section className='filter'>
-          <RangeFilter ranges={this.state.prices} color='green' title='price' />
+          <RangeFilter
+            ranges={this.state.prices}
+            color='green'
+            title='price'
+            {...this.props}
+          />
           <RangeFilter
             ranges={this.state.capacities}
             color='blue'
             title='capacity'
+            {...this.props}
           />
           <Time />
           <ServedFood foods={this.state.foods} />

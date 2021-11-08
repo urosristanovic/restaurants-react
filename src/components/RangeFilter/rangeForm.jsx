@@ -1,16 +1,19 @@
 import RangeInput from './rangeInput';
 
-const RangeForm = ({ color, title }) => {
+const RangeForm = ({ color, title, ...rest }) => {
   const handleSubmit = e => {
     e.preventDefault();
+    console.log(e.target.value);
+    rest.history.push(`?${title}`);
   };
-
   return (
-    <form onSubmit={handleSubmit} id={`${title}-form`}>
+    <form id={`${title}-form`}>
       <RangeInput title={title} value='min' />
       <RangeInput title={title} value='max' />
       <div className='btn-submit'>
-        <button className={color}>Apply filters</button>
+        <button onClick={handleSubmit} className={color}>
+          Apply filters
+        </button>
       </div>
     </form>
   );

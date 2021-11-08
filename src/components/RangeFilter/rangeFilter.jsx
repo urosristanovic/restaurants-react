@@ -1,9 +1,10 @@
 import RangeButton from './rangeButton';
 import RangeForm from './rangeForm';
 
-const RangeFilter = ({ ranges, title, color }) => {
+const RangeFilter = ({ ranges, title, color, ...rest }) => {
   const upperHeading =
     title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+
   return (
     <div className='filter-item'>
       <p>{upperHeading} range:</p>
@@ -20,7 +21,7 @@ const RangeFilter = ({ ranges, title, color }) => {
         })}
       </div>
 
-      <RangeForm color={color} title={title} />
+      <RangeForm color={color} title={title} {...rest} />
 
       <div className={'btn-advanced'}>
         <button className={color}>Advanced filters</button>
