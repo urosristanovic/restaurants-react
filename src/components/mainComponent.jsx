@@ -19,11 +19,7 @@ import {
   displayRestaurantsByAdvancedCapacity,
 } from './../services/capacity';
 import { displayRestaurantsByTime } from './../services/time';
-import {
-  displayRestaurantsByCategories,
-  getRestaurantsByCategory,
-  getRestaurantsByCategorySeparate,
-} from './../services/category';
+import { displayRestaurantsByCategories } from './../services/category';
 
 class MainCompnent extends Component {
   state = {
@@ -35,11 +31,12 @@ class MainCompnent extends Component {
 
   async componentDidMount() {
     this.setState({
-      restaurants: getRestaurants(),
-      prices: getPrices(),
-      capacities: getCapacities(),
-      foods: getFoods(),
+      restaurants: await getRestaurants(),
+      prices: await getPrices(),
+      capacities: await getCapacities(),
+      foods: await getFoods(),
     });
+    this.filterRestaurants(this.props.params);
   }
 
   componentDidUpdate(prevState) {
@@ -48,10 +45,12 @@ class MainCompnent extends Component {
     }
   }
 
-  filterRestaurants(params) {
-    const restaurants = getRestaurants();
+  async filterRestaurants(params) {
+    const restaurants = await getRestaurants();
     let filteredRestaurants = restaurants;
     if (params.priceParams) {
+      console.log('1');
+      console.log(this.state.prices);
       filteredRestaurants = displayRestaurantsByPrice(
         restaurants,
         this.state.prices,

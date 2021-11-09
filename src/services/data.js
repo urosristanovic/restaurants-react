@@ -1,17 +1,16 @@
-import restaurants from '../assets/json/restaurants.json';
-import capacitites from '../assets/json/capacity.json';
-import prices from '../assets/json/prices.json';
-import foods from '../assets/json/food.json';
-
-export function getRestaurants() {
-  return restaurants;
+export async function getRestaurants() {
+  const response = await fetch('../assets/json/restaurants.json');
+  return response.json();
 }
-export function getPrices() {
-  return prices;
+export async function getPrices() {
+  const response = await fetch('../assets/json/prices.json');
+  return response.json();
 }
-export function getCapacities() {
-  return capacitites;
+export async function getCapacities() {
+  const response = await fetch('../assets/json/capacity.json');
+  return response.json();
 }
-export function getFoods() {
-  return foods;
+export async function getFoods() {
+  const response = await fetch('../assets/json/food.json');
+  return response.json();
 }
