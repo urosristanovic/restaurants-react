@@ -19,6 +19,7 @@ import {
   displayRestaurantsByAdvancedCapacity,
 } from './../services/capacity';
 import { displayRestaurantsByTime } from './../services/time';
+import { getRestaurantsByCategory } from './../services/category';
 
 class MainCompnent extends Component {
   state = {
@@ -35,17 +36,6 @@ class MainCompnent extends Component {
       capacities: getCapacities(),
       foods: getFoods(),
     });
-    // const restaurants = await this.filterRestaurants(this.props.params);
-    // const prices = await getPrices();
-    // const capacities = await getCapacities();
-    // const foods = await getFoods();
-
-    // this.setState({
-    //   restaurants,
-    //   prices,
-    //   capacities,
-    //   foods,
-    // });
   }
 
   componentDidUpdate(prevState) {
@@ -87,6 +77,12 @@ class MainCompnent extends Component {
         restaurants,
         params.timeNow
       );
+    } else if (params.foods) {
+      const foods = params.foods.split(',');
+      for (let i = 0; i < foods.length; i++) {
+        foods[i] = foods[i].charAt(0).toUpperCase() + foods[i].slice(1);
+      }
+      filteredRestaurants = getRestaurantsByCategory(restaurants, foods);
     }
     this.setState({ restaurants: filteredRestaurants });
   }
