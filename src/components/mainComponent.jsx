@@ -107,7 +107,7 @@ class MainCompnent extends Component {
             title='capacity'
             {...this.props}
           />
-          <Time />
+          <Time {...this.props} />
           <ServedFood foods={this.state.foods} />
         </section>
         <div className='restaurants' id='restaurants'>

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Time = () => {
+const Time = ({ history }) => {
   const handleTime = e => {
-    const params = new URLSearchParams();
-    params.set('open-at', e.target.value);
-    window.location = '/restaurants?' + params;
+    history.push(`restaurants?open-at=${e.target.value}`);
   };
 
   return (
