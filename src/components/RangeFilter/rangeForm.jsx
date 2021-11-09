@@ -3,42 +3,50 @@ import RangeInput from './rangeInput';
 
 class RangeForm extends Component {
   state = {
-    price: '',
-    capacity: '',
+    minPrice: '',
+    maxPrice: '',
+    minCapacity: '',
+    maxCapacity: '',
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    // const param = this.handleParams();
-    // this.props.history.push(`?${param}`);
+    const id = e.target.id;
+    if (id === 'price')
+      this.props.history.push(
+        `restaurants?${this.state.minPrice}&${this.state.maxPrice}`
+      );
+    if (id === 'capacity')
+      this.props.history.push(
+        `restaurants?${this.state.minCapacity}&${this.state.maxCapacity}`
+      );
   };
 
-  handleParams = (params, value) => {
-    console.log(params, value);
-    if (value === 'price') this.setState({ price: params });
-    if (value === 'capacity') this.setState({ capacity: params });
+  handleParams = (e, params, value) => {
+    if (params === 'capacity') {
+      if (value === 'min') {
+        this.setState({ minCapacity: `${value}-${params}=${e.target.value}` });
+      } else if (value === 'max') {
+        this.setState({ maxCapacity: `${value}-${params}=${e.target.value}` });
+      }
+    }
+    if (params === 'price') {
+      if (value === 'min') {
+        this.setState({ minPrice: `${value}-${params}=${e.target.value}` });
+      } else if (value === 'max') {
+        this.setState({ maxPrice: `${value}-${params}=${e.target.value}` });
+      }
+    }
   };
 
   render() {
-    const { color, title, ...rest } = this.props;
+    const { color, title } = this.props;
     return (
       <form id={`${title}-form`}>
-        <RangeInput
-          title={title}
-          value='min'
-          params={this.state.price}
-          onParams={this.handleParams}
-          {...rest}
-        />
-        <RangeInput
-          title={title}
-          value='max'
-          params={this.state.capacity}
-          onParams={this.handleParams}
-          {...rest}
-        />
+        <RangeInput title={title} value='min' onParams={this.handleParams} />
+        <RangeInput title={title} value='max' onParams={this.handleParams} />
         <div className='btn-submit'>
-          <button onClick={this.handleSubmit} className={color}>
+          <button id={title} onClick={this.handleSubmit} className={color}>
             Apply filters
           </button>
         </div>

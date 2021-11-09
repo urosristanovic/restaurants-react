@@ -1,16 +1,6 @@
 import { Component } from 'react';
 
 class RangeInput extends Component {
-  state = {
-    value: '',
-  };
-
-  handleChange = (e, title, value) => {
-    this.props.onParams(`?${title}-${value}=${e.target.value}`, title);
-    this.props.history.push(`?${title}-${value}=${e.target.value}`);
-    this.setState({ title: e.target.value });
-  };
-
   render() {
     const { title, value } = this.props;
     const name = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
@@ -25,7 +15,7 @@ class RangeInput extends Component {
           name={`${value}-${title}`}
           id={`${value}-${title}`}
           placeholder={title}
-          onChange={e => this.handleChange(e, title, value)}
+          onChange={e => this.props.onParams(e, title, value)}
           required
         />
       </div>
