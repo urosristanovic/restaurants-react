@@ -5,20 +5,25 @@ import FoodRadioButton from './foodRadioButton';
 class FoodForm extends Component {
   state = {
     foods: [],
+    separate: '',
   };
   onSubmit = e => {
     e.preventDefault();
-    this.props.history.push(`restaurants?foods=${this.state.foods}`);
+    this.props.history.push(
+      `restaurants?foods=${this.state.foods}&separate=${this.state.separate}`
+    );
   };
   handleChecked = food => {
     let foods = this.state.foods;
-
     if (foods.includes(food)) {
       foods = foods.filter(f => f !== food);
     } else {
       foods.push(food);
     }
     this.setState({ foods });
+  };
+  handleChange = value => {
+    this.setState({ separate: value });
   };
 
   render() {
@@ -35,8 +40,8 @@ class FoodForm extends Component {
           );
         })}
         <div className='separate'>
-          <FoodRadioButton name='all' />
-          <FoodRadioButton name='any' />
+          <FoodRadioButton name='all' onChange={this.handleChange} />
+          <FoodRadioButton name='any' onChange={this.handleChange} />
         </div>
         <div className='btn-submit'>
           <button

@@ -1,4 +1,4 @@
-const FoodRadioButton = ({ name, checked }) => {
+const FoodRadioButton = ({ name, onChange }) => {
   return (
     <div className={name}>
       <input
@@ -6,7 +6,7 @@ const FoodRadioButton = ({ name, checked }) => {
         name='separate'
         value={name}
         id={`radio-${name}`}
-        checked={checked}
+        onChange={e => onChange(e.target.value)}
       />
       <label htmlFor={`radio-${name}`}>
         {name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}

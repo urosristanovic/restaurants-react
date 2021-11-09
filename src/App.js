@@ -14,6 +14,7 @@ class App extends Component {
     const maxCapacity = params.get('max-capacity');
     const timeNow = params.get('open-at');
     const foods = params.get('foods');
+    const separate = params.get('separate');
 
     return {
       priceParams,
@@ -24,6 +25,7 @@ class App extends Component {
       maxCapacity,
       timeNow,
       foods,
+      separate,
     };
   }
 

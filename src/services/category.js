@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 export function displayRestaurantsByCategories(
   listOfRestaurants,
   categories,
@@ -5,6 +6,10 @@ export function displayRestaurantsByCategories(
 ) {
   let restaurantsByCategory = [];
   const categoriesArray = categories.split(',');
+  for (let i = 0; i < categoriesArray.length; i++) {
+    categoriesArray[i] =
+      categoriesArray[i].charAt(0).toUpperCase() + categoriesArray[i].slice(1);
+  }
 
   switch (separate) {
     case 'any':

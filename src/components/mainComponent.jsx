@@ -19,7 +19,11 @@ import {
   displayRestaurantsByAdvancedCapacity,
 } from './../services/capacity';
 import { displayRestaurantsByTime } from './../services/time';
-import { getRestaurantsByCategory } from './../services/category';
+import {
+  displayRestaurantsByCategories,
+  getRestaurantsByCategory,
+  getRestaurantsByCategorySeparate,
+} from './../services/category';
 
 class MainCompnent extends Component {
   state = {
@@ -77,12 +81,12 @@ class MainCompnent extends Component {
         restaurants,
         params.timeNow
       );
-    } else if (params.foods) {
-      const foods = params.foods.split(',');
-      for (let i = 0; i < foods.length; i++) {
-        foods[i] = foods[i].charAt(0).toUpperCase() + foods[i].slice(1);
-      }
-      filteredRestaurants = getRestaurantsByCategory(restaurants, foods);
+    } else if (params.foods && params.separate) {
+      filteredRestaurants = displayRestaurantsByCategories(
+        restaurants,
+        params.foods,
+        params.separate
+      );
     }
     this.setState({ restaurants: filteredRestaurants });
   }
