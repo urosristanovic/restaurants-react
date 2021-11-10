@@ -49,8 +49,6 @@ class MainCompnent extends Component {
     const restaurants = await getRestaurants();
     let filteredRestaurants = restaurants;
     if (params.priceParams) {
-      console.log('1');
-      console.log(this.state.prices);
       filteredRestaurants = displayRestaurantsByPrice(
         restaurants,
         this.state.prices,
@@ -110,7 +108,10 @@ class MainCompnent extends Component {
           <ServedFood foods={this.state.foods} {...this.props} />
         </section>
         <div className='restaurants' id='restaurants'>
-          <Messages length={this.state.restaurants.length} />
+          <Messages
+            length={this.state.restaurants.length}
+            params={this.props.params}
+          />
           <Restaurants restaurants={this.state.restaurants} />
         </div>
       </div>
