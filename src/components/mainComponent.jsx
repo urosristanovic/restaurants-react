@@ -66,7 +66,6 @@ class MainCompnent extends Component {
         params.minPrice,
         params.maxPrice
       );
-      console.log(filteredRestaurants);
     } else if (params.minCapacity && params.maxCapacity) {
       filteredRestaurants = displayRestaurantsByAdvancedCapacity(
         restaurants,

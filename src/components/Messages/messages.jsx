@@ -1,31 +1,42 @@
 const Messages = ({ length, params }) => {
-  let arrayKeys = [];
-  let arrayValues = [];
-  let paramMessage = '';
-  let paramKey = '';
+  let activeFilters = [];
+  let filterValues = [];
+
   for (const param in params) {
     if (params[param]) {
-      paramMessage = params[param];
-      paramKey = param;
-      arrayKeys.push(param);
-      arrayValues.push(params[param]);
+      activeFilters.push(param);
+      filterValues.push(params[param]);
     }
   }
-  const handleFilter = paramKey => {
-    if (paramKey[0] === 'priceParams') {
-      paramKey = 'price range';
-    } else if (paramKey[0] === 'capacityParams') {
-      paramKey = 'capacity range';
-    } else if (paramKey[0] === 'timeNow') {
-      paramKey = 'time';
-    } else if (paramKey[0] === 'foods') {
-      paramKey = '';
-    } else if (paramKey[0] === 'minPrice' && paramKey[1] === 'maxPrice') {
-      paramKey = '';
+
+  const handleFilter = filter => {
+    let message = '';
+    let value = '';
+
+    if (filter[0] === 'priceParams') {
+      message = 'price range';
+      value = `${filterValues[0]}`;
+    } else if (filter[0] === 'capacityParams') {
+      message = 'capacity range';
+      value = `${filterValues[0]}`;
+    } else if (filter[0] === 'timeNow') {
+      message = 'opened restaurants at';
+      if (+filterValues[0]) {
+        value = `${filterValues[0]}h`;
+      } else {
+        value = 'this moment';
+      }
+    } else if (filter[0] === 'minPrice' && filter[1] === 'maxPrice') {
+      message = `price range between`;
+      value = `${filterValues[0]} and ${filterValues[1]}$`;
+    } else if (filter[0] === 'minCapacity' && filter[1] === 'maxCapacity') {
+      message = `capacity range between`;
+      value = `${filterValues[0]} and ${filterValues[1]}`;
     }
-    return paramKey;
+    return { message, value };
   };
-  paramKey = handleFilter(arrayKeys);
+
+  const filter = handleFilter(activeFilters);
 
   return (
     <div>
@@ -34,9 +45,9 @@ const Messages = ({ length, params }) => {
           Number of restaurants is: <i>{length}</i>.
         </h3>
       )}
-      {paramMessage ? (
+      {length > 0 && filter.value ? (
         <p className='filter-message'>
-          Your search filter is by {paramKey}: <b>{paramMessage}</b>.
+          Your search filter is by {filter.message}: <b>{filter.value}</b>.
         </p>
       ) : (
         ''
